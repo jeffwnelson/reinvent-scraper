@@ -24,10 +24,15 @@ else
 fi
 
 ## Magic
+## Download stream
 echo "${YELLOW}Downloading Stream...${NOCOLOR}"
 streamlink -o ${filename}.ts ${m3u8url} best --hls-live-restart
 
+## Convert stream to MP4
 echo "${YELLOW}Converting Stream to MP4...${NOCOLOR}"
-ffmpeg -i ${filename}.ts -c copy ${filename}.mp4
+ffmpeg -i ${filename}.ts -c copy ${filename}.mp4 --quiet
+
+## Delete original stream file
 rm ${filename}.ts
+
 echo "${YELLOW}Done.${NOCOLOR}"
