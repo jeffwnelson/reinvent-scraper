@@ -1,4 +1,4 @@
-RE:Invent 2020 Stream Scrapper
+RE:Invent 2020 Stream Scraper
 ==============================
 
 Just a quick bash script to help download these streams for offline viewing.

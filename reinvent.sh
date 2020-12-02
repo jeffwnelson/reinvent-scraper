@@ -26,6 +26,8 @@ fi
 ## Magic
 echo "${YELLOW}Downloading Stream...${NOCOLOR}"
 streamlink -o ${filename}.ts ${m3u8url} best --hls-live-restart
+
+echo "${YELLOW}Converting Stream to MP4...${NOCOLOR}"
 ffmpeg -i ${filename}.ts -c copy ${filename}.mp4
 rm ${filename}.ts
 echo "${YELLOW}Done.${NOCOLOR}"
