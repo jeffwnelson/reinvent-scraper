@@ -20,7 +20,7 @@ brew install curl ffmpeg streamlink
 ./reinvent.sh <m3u8 url> <filename>
 ```
 
-Locate M3U8 URL by visiting desired AWSEVENTS video, opening console and inspecting "Network" for ".m3u8" files. There is a ".m3u8" file for each stream. (usually several due to player quality options. 1080p/720p, etc...)
+Locate M3U8 URL by visiting desired AWSEVENTS video, opening console and inspecting "Network" for ".m3u8" files. This script will attempt to use a "master.m3u8" file to pull the stream from and ensure the best quality of video is downloaded.
 
 
 Filenames can include spaces, just encapsulate with quotes.
