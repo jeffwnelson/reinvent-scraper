@@ -9,30 +9,34 @@ YELLOW='\033[1;33m'
 
 ## Ask for URL
 if [[ -n "$1" ]]; then
-  m3u8url=${1}
+  URL=${1}
 else
-  echo "${GREEN}M3U8 URL${NOCOLOR}"
-  read m3u8url
+  echo "${GREEN}ReInvent Session URL${NOCOLOR}"
+  read URL
 fi
 
 ## Ask for Filename
 if [[ -n "$2" ]]; then
-  filename=${2}
+  FILENAME=${2}
 else
-  echo "${GREEN}Filename? (no extension)${NOCOLOR}"
-  read filename
+  echo "${GREEN}Filename? (no extension needed)${NOCOLOR}"
+  read FILENAME
 fi
 
 ## Magic
+## Grabbing URL Data
+STREAM_ID=${URL##*/}
+PARTNER_ID="3047232"
+
 ## Download stream
 echo "${YELLOW}Downloading Stream...${NOCOLOR}"
-streamlink -o ${filename}.ts ${m3u8url} best --hls-live-restart
+streamlink -o ${FILENAME}.ts https://play.virtual.awsevents.com/hlsm/p/${PARTNER_ID}/sp/${PARTNER_ID}00/serveFlavor/entryId/${STREAM_ID}/master.m3u8 best --hls-live-restart
 
 ## Convert stream to MP4
 echo "${YELLOW}Converting Stream to MP4...${NOCOLOR}"
-ffmpeg -i ${filename}.ts -c copy ${filename}.mp4
+ffmpeg -i ${FILENAME}.ts -c copy ${FILENAME}.mp4
 
 ## Delete original stream file
-rm ${filename}.ts
+rm ${FILENAME}.ts
 
 echo "${YELLOW}Done.${NOCOLOR}"
