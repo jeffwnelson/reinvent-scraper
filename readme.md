@@ -23,3 +23,6 @@ brew install curl ffmpeg streamlink
 ```
 
 Filenames can include spaces, just encapsulate with quotes.
+
+#### Caveats
+At this time, Keynotes are not supported. They are using a slightly different format for their stream (via CloudFront) and I haven't looked into a capture methodology yet.
